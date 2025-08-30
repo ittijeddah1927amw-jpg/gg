@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>انتهى التحميل</title>
+  <style>
+    body { background:linear-gradient(135deg,#121212,#330000); color:white; font-family:Arial; text-align:center; }
+    h1 { margin-top:50px; font-size:30px; }
+    a.btn {
+      display:inline-block; margin-top:40px; padding:15px 30px;
+      background:#ff4444; color:white; font-size:18px; font-weight:bold;
+      text-decoration:none; border-radius:15px;
+    }
+    a.btn:hover { background:#ff6666; }
+  </style>
+</head>
+<body>
+  <h1>✅ انتهى التحميل!</h1>
+  <p>الملف جاهز: {{ filename }}</p>
+  <a class="btn" href="{{ url_for('get_file', filename=filename) }}">⬇️ تحميل الملف</a><br><br>
+  <a class="btn" href="{{ url_for('home') }}">🏠 الصفحة الرئيسية</a>
+</body>
+</html>
