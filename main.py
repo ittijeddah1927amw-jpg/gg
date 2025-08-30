@@ -5,9 +5,10 @@ import yt_dlp
 app = Flask(__name__)
 app.secret_key = "secret123"  # علشان الفلاش ميسج
 
-FFMPEG_PATH = os.path.join(os.getcwd(), "bin", "ffmpeg.exe")
-DOWNLOADS_DIR = os.path.join(os.getcwd(), "downloads")
+# في Railway / Linux ما في ffmpeg.exe ، لازم تستخدم ffmpeg العادي
+FFMPEG_PATH = "ffmpeg"
 
+DOWNLOADS_DIR = os.path.join(os.getcwd(), "downloads")
 if not os.path.exists(DOWNLOADS_DIR):
     os.makedirs(DOWNLOADS_DIR)
 
@@ -93,4 +94,5 @@ def get_file(filename):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Railway يحدد البورت هنا
+    app.run(host="0.0.0.0", port=port)
